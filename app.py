@@ -3,6 +3,7 @@ import mysql.connector
 
 app = Flask(__name__)
 
+# MySQL Connection
 db = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -10,9 +11,12 @@ db = mysql.connector.connect(
     database="studentdb"
 )
 
+# -------------------- LOGIN --------------------
+
 @app.route("/")
 def home():
     return render_template("login.html")
+
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -22,20 +26,30 @@ def login():
 
     cursor = db.cursor()
 
-    query = "SELECT * FROM users WHERE BINARY username=%s AND BINARY password=%s"
+    query = """
+    SELECT * FROM users
+    WHERE BINARY username=%s
+    AND BINARY password=%s
+    """
 
     cursor.execute(query, (username, password))
 
     user = cursor.fetchone()
 
+    cursor.close()
+
     if user:
         return render_template("success.html")
     else:
         return render_template("failure.html")
-    
+
+
+# -------------------- REGISTER STUDENT --------------------
+
 @app.route("/registerstudent")
 def registerstudent():
     return render_template("registerstudent.html")
+
 
 @app.route("/savestudent", methods=["POST"])
 def savestudent():
@@ -51,12 +65,14 @@ def savestudent():
 
     query = """
     INSERT INTO studentdetails
-    (student_name,
-     student_age,
-     student_college,
-     student_phone,
-     student_branch,
-     password)
+    (
+        student_name,
+        student_age,
+        student_college,
+        student_phone,
+        student_branch,
+        password
+    )
     VALUES(%s,%s,%s,%s,%s,%s)
     """
 
@@ -73,10 +89,12 @@ def savestudent():
     )
 
     db.commit()
-
     cursor.close()
 
     return "Student Registered Successfully"
+
+
+# -------------------- GET ALL STUDENTS --------------------
 
 @app.route("/getstudents")
 def getstudents():
@@ -94,9 +112,13 @@ def getstudents():
         students=students
     )
 
+
+# -------------------- FIND STUDENT --------------------
+
 @app.route("/findstudent")
 def findstudent():
     return render_template("findstudent.html")
+
 
 @app.route("/searchstudent", methods=["POST"])
 def searchstudent():
@@ -123,6 +145,75 @@ def searchstudent():
         )
     else:
         return "Student Not Found"
+
+
+# -------------------- UPDATE STUDENT --------------------
+
+@app.route("/updatestudent")
+def updatestudent():
+    return render_template("updatestudent.html")
+
+@app.route("/updaterecord", methods=["POST"])
+def updaterecord():
+
+    student_id = request.form["student_id"]
+    student_name = request.form["student_name"]
+    student_phone = request.form["student_phone"]
+
+    cursor = db.cursor()
+
+    query = """
+    UPDATE studentdetails
+    SET student_name=%s,
+        student_phone=%s
+    WHERE student_id=%s
+    """
+
+    cursor.execute(
+        query,
+        (
+            student_name,
+            student_phone,
+            student_id
+        )
+    )
+
+    db.commit()
+
+    cursor.close()
+
+    return "Student Updated Successfully"
+
+   
+
+# -------------------- DELETE STUDENT --------------------
+
+@app.route("/deletestudent")
+def deletestudent():
+    return render_template("deletestudent.html")
+
+
+@app.route("/deleterecord", methods=["POST"])
+def deleterecord():
+
+    student_id = request.form["student_id"]
+
+    cursor = db.cursor()
+
+    query = """
+    DELETE FROM studentdetails
+    WHERE student_id=%s
+    """
+
+    cursor.execute(query, (student_id,))
+
+    db.commit()
+    cursor.close()
+
+    return "Student Deleted Successfully"
+
+
+# -------------------- RUN APPLICATION --------------------
 
 if __name__ == "__main__":
     app.run(debug=True)

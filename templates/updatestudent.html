@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Update Student</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<h2>Update Student</h2>
+
+<div class="form-container">
+
+<form action="/updaterecord" method="POST">
+
+Student ID:
+<input type="number" name="student_id" required>
+
+<br><br>
+
+Student Name:
+<input type="text" name="student_name" required>
+
+<br><br>
+
+Phone Number:
+<input type="text" 
+       name="student_phone"
+       maxlength="10" 
+       oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+       title="Enter 10 digit phone number">
+
+<br><br>
+
+<input type="submit" value="Update Student">
+
+</form>
+
+</div>
+
+</body>
+</html>
