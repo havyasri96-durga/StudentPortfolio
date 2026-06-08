@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find Student</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>Find Student</h2>
+
+<div class="form-container">
+
+<form action="/searchstudent" method="POST">
+
+    Student ID:
+    <input type="number" name="student_id" required>
+
+    <br><br>
+
+    <input type="submit" value="Search">
+
+</form>
+
+</div>
+
+</body>
+</html>

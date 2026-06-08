@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Student</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<h2>Register Student</h2>
+
+<div class="form-container">
+
+<form action="/savestudent" method="POST">
+
+Student Name:
+<input type="text" name="student_name">
+<br><br>
+
+Age:
+<input type="number" name="student_age">
+<br><br>
+
+College:
+<input type="text" name="student_college">
+<br><br>
+
+Phone:
+<input type="text" 
+       name="student_phone"
+       maxlength="10" 
+       oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+       title="Enter 10 digit phone number">
+<br><br>
+
+Branch:
+<input type="text" name="student_branch">
+<br><br>
+
+Password:
+<input type="password" name="password">
+<br><br>
+
+<input type="submit" value="Register">
+
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<h1>College Management System</h1>
+
+<div class="dashboard">
+
+    <div class="card-box">
+        <h2>🎓 Register Student</h2>
+        <p>Add a new student into the system.</p>
+
+        <a href="/registerstudent">
+            <button>Open</button>
+        </a>
+    </div>
+
+    <div class="card-box">
+        <h2>📋 Get Students</h2>
+        <p>View all registered students.</p>
+
+        <a href="/getstudents">
+            <button>Open</button>
+        </a>
+    </div>
+
+    <div class="card-box">
+        <h2>🔍 Find Student</h2>
+        <p>Search a student by ID.</p>
+
+        <a href="/findstudent">
+            <button>Open</button>
+        </a>
+    </div>
+
+    <div class="card-box">
+        <h2>🚪 Logout</h2>
+        <p>Exit from the dashboard.</p>
+
+        <a href="/">
+            <button>Logout</button>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

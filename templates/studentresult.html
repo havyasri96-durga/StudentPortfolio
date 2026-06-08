@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Details</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>Student Information</h2>
+
+<div class="card">
+
+<p><b>ID:</b> {{ student[0] }}</p>
+<p><b>Name:</b> {{ student[1] }}</p>
+<p><b>Age:</b> {{ student[2] }}</p>
+<p><b>College:</b> {{ student[3] }}</p>
+<p><b>Phone:</b> {{ student[4] }}</p>
+<p><b>Branch:</b> {{ student[5] }}</p>
+
+</div>
+
+</body>
+</html>
