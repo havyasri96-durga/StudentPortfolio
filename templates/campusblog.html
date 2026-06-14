@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Campus Blog</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static',filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+<div class="dashboard-container">
+
+<h1 class="title">
+📝 Campus Blog
+</h1>
+
+<div class="dashboard-grid">
+
+<a href="/createpost" class="dashboard-card">
+
+<h2>➕ Create Post</h2>
+
+<p>
+Publish a new blog article
+</p>
+
+</a>
+
+<a href="/viewposts" class="dashboard-card">
+
+<h2>📖 View Posts</h2>
+
+<p>
+Read all blog posts
+</p>
+
+</a>
+
+<a href="/searchpost" class="dashboard-card">
+
+<h2>🔍 Search Post</h2>
+
+<p>
+Find blog posts
+</p>
+
+</a>
+
+<a href="/dashboard" class="dashboard-card">
+
+<h2>🏠 Dashboard</h2>
+
+<p>
+Return to Admin Dashboard
+</p>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

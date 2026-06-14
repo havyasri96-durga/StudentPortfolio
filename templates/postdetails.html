@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>{{ post[1] }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+<div class="dashboard-container">
+
+<!-- 🔷 SINGLE MAIN CONTAINER -->
+<div class="post-container">
+
+    <!-- ================= POST ================= -->
+    <div class="post-header">
+
+        <h1 class="post-title">{{ post[1] }}</h1>
+
+        <div class="post-meta">
+            👤 {{ post[2] }} &nbsp; | &nbsp; 🏷 {{ post[3] }}
+        </div>
+
+    </div>
+
+    <div class="post-content">
+        {{ post[4] }}
+    </div>
+
+
+    <!-- ================= ADD COMMENT ================= -->
+    <div class="comment-box">
+
+        <h3>💬 Add Comment</h3>
+
+        <form action="/addcomment" method="POST">
+
+            <input type="hidden" name="post_id" value="{{ post[0] }}">
+
+            <input type="text"
+                   name="username"
+                   placeholder="Your name"
+                   required>
+
+            <textarea name="comment"
+                      rows="3"
+                      placeholder="Write a comment..."
+                      required></textarea>
+
+            <button type="submit" class="btn-primary">
+                Post Comment
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- ================= COMMENTS ================= -->
+    <div class="comments-section">
+
+        <h3>💬 Discussion</h3>
+
+        {% for c in comments %}
+
+        <div class="comment">
+
+            <div class="comment-user">
+                👤 {{ c[3] }}
+            </div>
+
+            <div class="comment-text">
+                {{ c[4] }}
+            </div>
+
+
+            <!-- REPLIES INSIDE SAME THREAD -->
+            <div class="replies">
+
+                {% for r in replies %}
+                    {% if r[2] == c[0] %}
+
+                    <div class="reply">
+                        ↳ <b>{{ r[3] }}</b>
+                        <div>{{ r[4] }}</div>
+                    </div>
+
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+
+
+            <!-- REPLY FORM -->
+            <form action="/addreply" method="POST" class="reply-form">
+
+                <input type="hidden" name="post_id" value="{{ post[0] }}">
+                <input type="hidden" name="comment_id" value="{{ c[0] }}">
+
+                <input type="text"
+                       name="username"
+                       placeholder="Reply as..."
+                       required>
+
+                <input type="text"
+                       name="reply"
+                       placeholder="Write a reply..."
+                       required>
+
+                <button type="submit" class="btn-reply">
+                    Reply
+                </button>
+
+            </form>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
+
+
+                

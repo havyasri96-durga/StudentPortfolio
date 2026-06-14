@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Search Blog Post</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <div class="dashboard-container">
+
+        <div class="blog-form-card">
+
+            <h1 class="title">
+                🔍 Search Blog Posts
+            </h1>
+
+            <p class="search-description">
+                Search blog posts by title and quickly find articles.
+            </p>
+
+            <form action="/searchblog" method="POST">
+
+                <div class="form-group">
+
+                    <label>
+                        📝 Blog Title
+                    </label>
+
+                    <input
+                    type="text"
+                    name="keyword"
+                    placeholder="Enter blog title..."
+                    required>
+
+                </div>
+
+                <div class="form-buttons">
+
+                    <button
+                    type="submit"
+                    class="publish-btn">
+
+                        🔍 Search Post
+
+                    </button>
+
+                    <a href="/campusblog"
+                       class="cancel-btn">
+
+                        🏠 Back
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+

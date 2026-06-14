@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Edit Blog Post</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <div class="container">
+
+        <h1>Edit Blog Post</h1>
+
+        <form action="/updatepost" method="POST">
+
+            <!-- Hidden Post ID -->
+            <input
+            type="hidden"
+            name="post_id"
+            value="{{ post[0] }}">
+
+            <!-- Title -->
+            <input
+            type="text"
+            name="title"
+            value="{{ post[1] }}"
+            placeholder="Post Title"
+            required>
+
+            <br><br>
+
+            <!-- Author -->
+            <input
+            type="text"
+            name="author"
+            value="{{ post[2] }}"
+            placeholder="Author Name"
+            required>
+
+            <br><br>
+
+            <!-- Category -->
+            <input
+            type="text"
+            name="category"
+            value="{{ post[3] }}"
+            placeholder="Category"
+            required>
+
+            <br><br>
+
+            <!-- Content -->
+            <textarea
+            name="content"
+            rows="10"
+            placeholder="Write your blog..."
+            required>{{ post[4] }}</textarea>
+
+            <br><br>
+
+            <!-- Buttons -->
+            <button type="submit">
+
+                Update Post
+
+            </button>
+
+            <a href="/viewposts"
+               class="btn">
+
+                Cancel
+
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -492,6 +492,252 @@ def browseproducts():
 
     return render_template("browseproducts.html", products=products) 
 
+@app.route("/campusblog")
+def campusblog():
+    return render_template("campusblog.html")
+
+@app.route("/createpost")
+def createpost():
+    return render_template("createpost.html")
+
+@app.route("/savepost", methods=["POST"])
+def savepost():
+
+    title = request.form["title"]
+    author = request.form["author"]
+    category = request.form["category"]
+    content = request.form["content"]
+
+    cursor = db.cursor()
+
+    cursor.execute(
+        """
+        INSERT INTO blog_posts
+        (title, author, category, content)
+        VALUES(%s,%s,%s,%s)
+        """,
+        (title, author, category, content)
+    )
+
+    db.commit()
+
+    cursor.close()
+
+    return redirect("/viewposts")
+
+@app.route("/viewposts")
+def viewposts():
+
+    cursor = db.cursor()
+
+    cursor.execute(
+        "SELECT * FROM blog_posts ORDER BY created_at DESC"
+    )
+
+    posts = cursor.fetchall()
+
+    cursor.close()
+
+    return render_template(
+        "viewposts.html",
+        posts=posts
+    )
+
+@app.route("/postdetails/<int:post_id>")
+def postdetails(post_id):
+
+    cursor = db.cursor()
+
+    # Blog post
+    cursor.execute(
+        "SELECT * FROM blog_posts WHERE post_id=%s",
+        (post_id,)
+    )
+
+    post = cursor.fetchone()
+
+    # Main comments only
+    cursor.execute(
+        """
+        SELECT *
+        FROM comments
+        WHERE post_id=%s
+        AND parent_comment_id IS NULL
+        ORDER BY created_at DESC
+        """,
+        (post_id,)
+    )
+
+    comments = cursor.fetchall()
+
+    # All replies
+    cursor.execute(
+        """
+        SELECT *
+        FROM comments
+        WHERE parent_comment_id IS NOT NULL
+        """
+    )
+
+    replies = cursor.fetchall()
+
+    cursor.close()
+
+    return render_template(
+        "postdetails.html",
+        post=post,
+        comments=comments,
+        replies=replies
+    )
+
+@app.route("/addcomment", methods=["POST"])
+def addcomment():
+
+    post_id = request.form["post_id"]
+    username = request.form["username"]
+    comment = request.form["comment"]
+
+    cursor = db.cursor()
+
+    cursor.execute(
+        """
+        INSERT INTO comments
+        (post_id, parent_comment_id, username, comment)
+        VALUES (%s, NULL, %s, %s)
+        """,
+        (post_id, username, comment)
+    )
+
+    db.commit()
+    cursor.close()
+
+    return redirect(f"/postdetails/{post_id}")
+
+@app.route("/addreply", methods=["POST"])
+def addreply():
+
+    post_id = request.form["post_id"]
+    comment_id = request.form["comment_id"]
+    username = request.form["username"]
+    reply = request.form["reply"]
+
+    cursor = db.cursor()
+
+    cursor.execute(
+        """
+        INSERT INTO comments
+        (post_id, parent_comment_id, username, comment)
+        VALUES(%s,%s,%s,%s)
+        """,
+        (post_id, comment_id, username, reply)
+    )
+
+    db.commit()
+
+    cursor.close()
+
+    return redirect(f"/postdetails/{post_id}")
+
+@app.route("/searchpost")
+def searchpost():
+    return render_template("searchpost.html")
+
+@app.route("/searchblog", methods=["POST"])
+def searchblog():
+
+    keyword = request.form["keyword"]
+
+    cursor = db.cursor()
+
+    cursor.execute(
+        """
+        SELECT *
+        FROM blog_posts
+        WHERE title LIKE %s
+        """,
+        ('%' + keyword + '%',)
+    )
+
+    posts = cursor.fetchall()
+
+    cursor.close()
+
+    return render_template(
+        "viewposts.html",
+        posts=posts
+    )
+
+@app.route("/editpost/<int:post_id>")
+def editpost(post_id):
+
+    cursor = db.cursor()
+
+    cursor.execute(
+        "SELECT * FROM blog_posts WHERE post_id=%s",
+        (post_id,)
+    )
+
+    post = cursor.fetchone()
+
+    cursor.close()
+
+    return render_template(
+        "editpost.html",
+        post=post
+    )
+
+@app.route("/updatepost", methods=["POST"])
+def updatepost():
+
+    post_id = request.form["post_id"]
+    title = request.form["title"]
+    author = request.form["author"]
+    category = request.form["category"]
+    content = request.form["content"]
+
+    cursor = db.cursor()
+
+    cursor.execute(
+        """
+        UPDATE blog_posts
+        SET title=%s,
+            author=%s,
+            category=%s,
+            content=%s
+        WHERE post_id=%s
+        """,
+        (title, author, category, content, post_id)
+    )
+
+    db.commit()
+
+    cursor.close()
+
+    return redirect("/viewposts")
+
+@app.route("/deletepost/<int:post_id>")
+def deletepost(post_id):
+
+    cursor = db.cursor()
+
+    # Delete all comments and replies
+    cursor.execute(
+        "DELETE FROM comments WHERE post_id=%s",
+        (post_id,)
+    )
+
+    # Delete the blog post
+    cursor.execute(
+        "DELETE FROM blog_posts WHERE post_id=%s",
+        (post_id,)
+    )
+
+    db.commit()
+
+    cursor.close()
+
+    return redirect("/viewposts")
+
 # ======================================================
 # RUN APP
 # ======================================================

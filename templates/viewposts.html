@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Campus Blog Posts</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <div class="dashboard-container">
+
+        <h1 class="title">
+            📝 Campus Blog Posts
+        </h1>
+
+        <div class="blog-container">
+
+            {% if posts %}
+
+                {% for post in posts %}
+
+                <div class="blog-card">
+
+                    <div class="blog-header">
+
+                        <h2>
+                            {{ post[1] }}
+                        </h2>
+
+                    </div>
+
+                    <div class="blog-info">
+
+                        <span>
+                            👤 {{ post[2] }}
+                        </span>
+
+                        <span>
+                            🏷 {{ post[3] }}
+                        </span>
+
+                    </div>
+
+                    <div class="blog-content">
+
+                        {{ post[4][:200] }}...
+
+                    </div>
+
+                    <div class="blog-buttons">
+
+                        <a href="/postdetails/{{ post[0] }}"
+                           class="btn view-btn">
+
+                            📖 Read More
+
+                        </a>
+
+                        <a href="/editpost/{{ post[0] }}"
+                           class="btn edit-btn">
+
+                            ✏️ Edit
+
+                        </a>
+
+                        <a href="/deletepost/{{ post[0] }}"
+                           class="btn delete-btn">
+
+                            ❌ Delete
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <div class="blog-card">
+
+                    <h2>No Blog Posts Available</h2>
+
+                    <p>Create your first blog post.</p>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        <div class="bottom-buttons">
+
+            <a href="/createpost" class="btn">
+                ➕ Create New Post
+            </a>
+
+            <a href="/campusblog" class="btn">
+                🏠 Back to Campus Blog
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+

@@ -211,3 +211,21 @@ FROM orders;
 SELECT SUM(total_amount)
 FROM orders;
 
+CREATE TABLE blog_posts (
+    post_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    author VARCHAR(100),
+    category VARCHAR(100),
+    content TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE comments (
+    comment_id INT AUTO_INCREMENT PRIMARY KEY,
+    post_id INT,
+    parent_comment_id INT NULL,
+    username VARCHAR(100),
+    comment TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (post_id) REFERENCES blog_posts(post_id)
+);
