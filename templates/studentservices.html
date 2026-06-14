@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Services</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <div class="dashboard-container">
+
+        <h1 class="title">🎓 Student Services</h1>
+
+        <div class="dashboard-grid">
+
+            <a href="/registerstudent" class="dashboard-card">
+                <h2>📝 Register Student</h2>
+                <p>Add new students into the system</p>
+            </a>
+
+            <a href="/getstudents" class="dashboard-card">
+                <h2>📋 Get Students</h2>
+                <p>View all registered students</p>
+            </a>
+
+            <a href="/findstudent" class="dashboard-card">
+                <h2>🔍 Find Student</h2>
+                <p>Search student details</p>
+            </a>
+
+            <a href="/updatestudent" class="dashboard-card">
+                <h2>✏ Update Student</h2>
+                <p>Modify student information</p>
+            </a>
+
+            <a href="/deletestudent" class="dashboard-card">
+                <h2>🗑 Delete Student</h2>
+                <p>Remove student records</p>
+            </a>
+
+            <a href="/dashboard" class="dashboard-card">
+                <h2>🏠 Dashboard</h2>
+                <p>Return to Home Page</p>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

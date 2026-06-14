@@ -1,44 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>Update Student</title>
-
-<link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}">
-
+    <title>Update Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-<h2>Update Student</h2>
+<div class="page-wrapper">
 
-<div class="form-container">
+    <div class="card">
 
-<form action="/updaterecord" method="POST">
+        <h1 class="title">Update Student</h1>
 
-Student ID:
-<input type="number" name="student_id" required>
+        <form action="/updaterecord" method="POST" class="form">
 
-<br><br>
+            <div class="form-group">
+                <label>Student Id</label>
+                <input type="number" name="student_id" placeholder="Student ID" required>
+            </div>
 
-Student Name:
-<input type="text" name="student_name" required>
+            <div class="form-group">
+                <label>Student name</label>
+                <input type="text" name="student_name" placeholder="Student Name" required>
+            </div>
 
-<br><br>
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="text" 
+                       name="student_phone"
+                       placeholder="Phone Number"
+                       maxlength="10"
+                       oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+                       required>
+            </div>
 
-Phone Number:
-<input type="text" 
-       name="student_phone"
-       maxlength="10" 
-       oninput="this.value=this.value.replace(/[^0-9]/g,'')"
-       title="Enter 10 digit phone number">
+            <button type="submit" class="btn">Update Student</button>
 
-<br><br>
+        </form>
 
-<input type="submit" value="Update Student">
-
-</form>
+    </div>
 
 </div>
 

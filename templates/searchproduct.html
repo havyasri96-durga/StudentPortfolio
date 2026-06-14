@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Product</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <div class="card">
+
+        <h1 class="title">Search Product</h1>
+
+        <form action="/findproductrecord" method="POST" class="form">
+
+            <div class="form-group">
+                <label>Product Id</label>
+                <input type="number" name="product_id" placeholder="Enter Product ID" required>
+            </div>
+
+            <button type="submit" class="btn">Search Product</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Store Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <div class="dashboard-container">
+
+        <h1 class="title">🛒 Store Management</h1>
+
+        <div class="dashboard-grid">
+
+            <a href="/addproduct" class="dashboard-card">
+                <h2>🛍 Add Product</h2>
+                <p>Add new products</p>
+            </a>
+
+            <a href="/products" class="dashboard-card">
+                <h2>📦 View Products</h2>
+                <p>See all products</p>
+            </a>
+
+            <a href="/updateproduct" class="dashboard-card">
+                <h2>✏ Update Product</h2>
+                <p>Modify product details</p>
+            </a>
+
+            <a href="/deleteproduct" class="dashboard-card">
+                <h2>🗑 Delete Product</h2>
+                <p>Remove products</p>
+            </a>
+
+            <a href="/searchproduct" class="dashboard-card">
+                <h2>🔍 Search Product</h2>
+                <p>Find product information</p>
+            </a>
+
+            <a href="/dashboard" class="dashboard-card">
+                <h2>🏠 Dashboard</h2>
+                <p>Return to Home Page</p>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Shopping</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <div class="dashboard-container">
+
+        <h1 class="title">👤 Customer Shopping</h1>
+
+        <div class="dashboard-grid">
+
+            <a href="/browseproducts" class="dashboard-card">
+                <h2>🛍 Browse Products</h2>
+                <p>View available products</p>
+            </a>
+
+            <a href="/addtocart" class="dashboard-card">
+                <h2>🛒 Add To Cart</h2>
+                <p>Add products to cart</p>
+            </a>
+
+            <a href="/viewcart" class="dashboard-card">
+                <h2>🛍 View Cart</h2>
+                <p>See cart details</p>
+            </a>
+
+            <a href="/buyproduct" class="dashboard-card">
+                <h2>💳 Buy Product</h2>
+                <p>Purchase products</p>
+            </a>
+
+            <a href="/orders" class="dashboard-card">
+                <h2>📋 View Orders</h2>
+                <p>See placed orders</p>
+            </a>
+
+            <a href="/dashboard" class="dashboard-card">
+                <h2>🏠 Dashboard</h2>
+                <p>Return to Home Page</p>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

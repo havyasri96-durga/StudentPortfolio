@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add to Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <div class="card">
+
+        <h1 class="title">Add to Cart</h1>
+
+    <form action="/savecart" method="POST">
+
+        <input type="text" name="student_name" placeholder="Student Name" required>
+
+        <input type="text" name="product_name" placeholder="Product Name" required>
+
+        <input type="number" name="quantity" placeholder="Quantity" required min="1">
+
+        <button type="submit">Add to Cart</button>
+
+    </form>    
+
+    </div>
+
+</div>
+
+</body>
+</html>

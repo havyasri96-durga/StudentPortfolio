@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Product</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <div class="card">
+
+        <h1 class="title">🛍 Add Product</h1>
+
+        <form action="/saveproduct" method="POST" class="form">
+
+            <!-- Product Name -->
+            <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" name="product_name" placeholder="Enter product name" required>
+            </div>
+
+            <!-- Price -->
+            <div class="form-group">
+                <label>Price (₹)</label>
+                <input type="text" name="price" placeholder="Enter price" step="0.01" required>
+            </div>
+
+            <!-- Quantity (Professional UI) -->
+            <div class="form-group">
+                <label>Stock Quantity</label>
+               
+                    <input type="number" name="quantity" min="1" placeholder="Enter stock quantity" required>
+           
+                
+            </div>
+
+            <button type="submit" class="btn">Add Product</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

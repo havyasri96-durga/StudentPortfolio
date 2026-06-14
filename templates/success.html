@@ -1,114 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>Admin Dashboard</title>
-
-<link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}">
-
+    <title>Smart Campus ERP & E-Commerce System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
+<!-- Navbar -->
 <div class="navbar">
 
     <div class="logo">
-        🎓 Student Management System
+        🎓 Smart Campus ERP & E-Commerce System
     </div>
 
     <div class="nav-links">
-        <a href="/registerstudent">Register</a>
-        <a href="/getstudents">Students</a>
-        <a href="/findstudent">Search</a>
         <a href="/">Logout</a>
     </div>
 
 </div>
 
+<!-- Welcome Section -->
 <div class="welcome">
 
     <h1>Admin Dashboard</h1>
 
-    <h3>Godavari Global University</h3>
+    <h3>Integrated Student & Store Management Platform</h3>
 
-    <p>Welcome Administrator</p>
+    <p>
+        Manage students, products, shopping, orders and reports
+        through one centralized system.
+    </p>
 
 </div>
 
-<div class="dashboard">
+<!-- Dashboard -->
+<div class="page-wrapper">
 
-    <div class="card-box update-card">
+    <div class="dashboard-container">
 
-    <h2>✏️ Update Student</h2>
+        <div class="dashboard-grid">
 
-    <p>Modify student information.</p>
+            <a href="/studentservices" class="dashboard-card">
 
-    <a href="/updatestudent">
-        <button>Open</button>
-    </a>
+                <h2>🎓 Student Services</h2>
 
-    </div>
+                <p>
+                    Register, view, update, delete and manage students
+                </p>
 
-    <div class="card-box delete-card">
+            </a>
 
-    <h2>🗑️ Delete Student</h2>
+            <a href="/storemanagement" class="dashboard-card">
 
-    <p>Remove student from database.</p>
+                <h2>🛒 Store Management</h2>
 
-    <a href="/deletestudent">
-        <button>Open</button>
-    </a>
+                <p>
+                    Add, update, delete and search products
+                </p>
 
-    </div>
+            </a>
 
-    <div class="card-box register-card">
+            <a href="/customershopping" class="dashboard-card">
 
-        <h2>🎓 Register Student</h2>
+                <h2>👤 Customer Shopping</h2>
 
-        <p>Add a new student into the system.</p>
+                <p>
+                    Browse products, cart, orders and purchase system
+                </p>
 
-        <a href="/registerstudent">
-            <button>Open</button>
-        </a>
+            </a>
 
-    </div>
+            <a href="/reports" class="dashboard-card">
 
-    <div class="card-box students-card">
+                <h2>📊 Reports</h2>
 
-        <h2>📋 Get Students</h2>
+                <p>
+                    View statistics, analytics and revenue reports
+                </p>
 
-        <p>View all registered students.</p>
+            </a>
 
-        <a href="/getstudents">
-            <button>Open</button>
-        </a>
-
-    </div>
-
-    <div class="card-box search-card">
-
-        <h2>🔍 Find Student</h2>
-
-        <p>Search student by ID.</p>
-
-        <a href="/findstudent">
-            <button>Open</button>
-        </a>
+        </div>
 
     </div>
 
-    <div class="card-box logout-card">
+</div>
 
-        <h2>🚪 Logout</h2>
+<!-- Footer -->
+<div class="footer">
 
-        <p>Exit from dashboard.</p>
-
-        <a href="/">
-            <button>Logout</button>
-        </a>
-
-    </div>
+    © 2026 Smart Campus ERP & E-Commerce System |
+    Developed using Flask, MySQL, HTML and CSS
 
 </div>
 

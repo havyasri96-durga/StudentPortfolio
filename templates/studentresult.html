@@ -1,23 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Details</title>
-
-    <link rel="stylesheet"
-    href="{{ url_for('static', filename='style.css') }}">
+    <title>Student Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<h2>Student Information</h2>
+<div class="page-wrapper">
 
-<div class="card">
+    <div class="card details-card">
 
-<p><b>ID:</b> {{ student[0] }}</p>
-<p><b>Name:</b> {{ student[1] }}</p>
-<p><b>Age:</b> {{ student[2] }}</p>
-<p><b>College:</b> {{ student[3] }}</p>
-<p><b>Phone:</b> {{ student[4] }}</p>
-<p><b>Branch:</b> {{ student[5] }}</p>
+        <h1 class="title">🎓 Student Details</h1>
+
+        <div class="details-grid">
+
+            <div class="detail-item">
+                <span class="label">Name</span>
+                <span class="value">{{ student[0] }}</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="label">Age</span>
+                <span class="value">{{ student[1] }}</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="label">College</span>
+                <span class="value">{{ student[2] }}</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="label">Phone</span>
+                <span class="value">{{ student[3] }}</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="label">Branch</span>
+                <span class="value">{{ student[4] }}</span>
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <div class="card details-card">
+
+        <h1 class="title">📦 Product Details</h1>
+
+        <div class="details-grid">
+
+            <div class="detail-item">
+                <span class="label">ID</span>
+                <span class="value">{{ product[0] }}</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="label">Product Name</span>
+                <span class="value">{{ product[1] }}</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="label">Price</span>
+                <span class="value">₹ {{ product[2] }}</span>
+            </div>
+
+            <div class="detail-item">
+                <span class="label">Quantity</span>
+                <span class="value">{{ product[3] }}</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Failure</title>
-
-    <style>
-        body{
-            background-color: fuchsia;
-            text-align: center;
-            font-family: serif;
-        }
-
-        h1{
-            color: brown;
-            margin-top: 200px;
-        }
-
-        a{
-            text-decoration: none;
-            color: aqua;
-            font-size: 20px;
-        }
-    </style>
+    <title>Login Failed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<h1>Invalid Username or Password</h1>
+<div class="page-wrapper">
 
-<br>
+    <div class="card error-card">
 
-<a href="/">Try Again</a>
+        <h1 class="error-title">❌ Invalid Username or Password</h1>
+
+        <p class="error-text">
+            Please check your login credentials and try again.
+        </p>
+
+        <a href="/" class="btn">Try Again</a>
+
+    </div>
+
+</div>
 
 </body>
 </html>

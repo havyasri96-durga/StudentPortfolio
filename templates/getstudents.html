@@ -2,39 +2,53 @@
 <html>
 <head>
     <title>All Students</title>
-
-    <link rel="stylesheet"
-    href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<h2>Student Details</h2>
+<div class="page-wrapper">
 
-<table border="1">
+    <div class="card table-card">
 
-<tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Age</th>
-    <th>College</th>
-    <th>Phone</th>
-    <th>Branch</th>
-</tr>
+        <h1 class="title">All Students</h1>
 
-{% for student in students %}
+        <div class="table-container">
 
-<tr>
-    <td>{{ student[0] }}</td>
-    <td>{{ student[1] }}</td>
-    <td>{{ student[2] }}</td>
-    <td>{{ student[3] }}</td>
-    <td>{{ student[4] }}</td>
-    <td>{{ student[5] }}</td>
-</tr>
+            <table class="styled-table">
 
-{% endfor %}
+                <thead>
+                    <tr>
+                        <th>Student Id</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>College</th>
+                        <th>Phone</th>
+                        <th>Branch</th>
+                    </tr>
+                </thead>
 
-</table>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ student[0] }}</td>
+                        <td>{{ student[1] }}</td>
+                        <td>{{ student[2] }}</td>
+                        <td>{{ student[3] }}</td>
+                        <td>{{ student[4] }}</td>
+                        <td>{{ student[5] }}</td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 </html>

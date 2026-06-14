@@ -2,26 +2,29 @@
 <html>
 <head>
     <title>Find Student</title>
-
-    <link rel="stylesheet"
-    href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<h2>Find Student</h2>
+<div class="page-wrapper">
 
-<div class="form-container">
+    <div class="card">
 
-<form action="/searchstudent" method="POST">
+        <h1 class="title">Find Student</h1>
 
-    Student ID:
-    <input type="number" name="student_id" required>
+        <form action="/searchstudent" method="POST" class="form">
 
-    <br><br>
+            <div class="form-group">
+                <label>Student Id</label>
+                <input type="number" name="student_id" placeholder="Enter Student ID" required>
+            </div>
 
-    <input type="submit" value="Search">
+            <button type="submit" class="btn">Search</button>
 
-</form>
+        </form>
+
+    </div>
 
 </div>
 
