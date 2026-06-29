@@ -5,10 +5,11 @@ app = Flask(__name__)
 
 # ================= DATABASE CONNECTION =================
 db = mysql.connector.connect(
-    host="localhost",
+     host="mainline.proxy.rlwy.net",
     user="root",
-    password="admin",
-    database="studentdb"
+    password="DZCXkmuJugSjSkAWHqNEKMtUluGswHik",
+    database="student_db",
+    port="15623"
 )
 
 # ======================================================
