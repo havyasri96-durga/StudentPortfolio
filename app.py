@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 # ================= DATABASE CONNECTION =================
 db = mysql.connector.connect(
-     host="mainline.proxy.rlwy.net",
+    host="mainline.proxy.rlwy.net",
     user="root",
     password="DZCXkmuJugSjSkAWHqNEKMtUluGswHik",
     database="student_db",
